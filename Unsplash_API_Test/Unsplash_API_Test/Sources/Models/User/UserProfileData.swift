@@ -56,6 +56,7 @@ struct UserResponse: Codable {
     var total_likes: Int
     var total_photos: Int
     var followers_count: Int
+    var downloads: Int
 }
 
 struct ProfileSizes: Codable {

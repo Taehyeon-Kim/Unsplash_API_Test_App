@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var followersCount: UILabel!
-    @IBOutlet weak var totalPhotos: UILabel!
+    @IBOutlet weak var totalDownloads: UILabel!
     @IBOutlet weak var totalLikes: UILabel!
 
     @IBOutlet weak var likedPhotoCollectionView: UICollectionView!
@@ -64,8 +64,7 @@ class ProfileViewController: UIViewController {
                     self.username.text = self.userInfo.username
                     self.bio.text = self.userInfo.bio
                     self.followersCount.text = String(self.userInfo.followers_count)
-                    self.totalPhotos.text = String(self.userInfo.total_photos)
-//                    self.totalLikes.text = String(self.userInfo.total_likes)
+                    self.totalDownloads.text = String(self.userInfo.downloads)
                 }
             case .requestErr(let msg):
                 print(msg)
@@ -83,7 +82,6 @@ class ProfileViewController: UIViewController {
         UserLikedPhotoService.shared.getUserLikedPhoto(clientID: API_KEY, username: "taeeehyeon") { (result) -> (Void) in
             switch result {
             case .success(let data):
-//                print("☎️\(data)")
                 self.userLikedPhotos = []
                 if let response = data as? [Result] {
                     self.userLikedPhotos = response
@@ -109,6 +107,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+
 }
 
 extension ProfileViewController {
@@ -152,8 +151,18 @@ extension ProfileViewController {
 }
 
 extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        if let url = URL(string: self.userLikedPhotos[indexPath.row].urls.full) {
+            detailVC.setData(url: url)
+        }
+        detailVC.modalPresentationStyle = .fullScreen
+        detailVC.photoID = userLikedPhotos[indexPath.row].id
+        self.present(detailVC, animated: true, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print(self.userLikedPhotos.count)
         self.totalLikes.text = String(self.userLikedPhotos.count)
         return self.userLikedPhotos.count
     }

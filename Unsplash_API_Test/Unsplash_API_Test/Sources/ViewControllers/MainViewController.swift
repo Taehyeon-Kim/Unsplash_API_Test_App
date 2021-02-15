@@ -24,14 +24,39 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        fetchRandomPhoto(count: "30")
     }
     
     // MARK: - Custom Function
     
+    /// 뷰 셋업
     func setupView() {
         self.navigationController?.navigationBar.isHidden = true
         setupSearchBar()
         setupCollectionView()
+    }
+    
+    /// 랜덤하게 사진 가져오기
+    func fetchRandomPhoto(count: String = "10") {
+        fetchAPIKey()
+        PhotoRandomService.shared.getRandomPhoto(clientID: API_KEY, count: count) { (result) -> (Void) in
+            switch result {
+            case .success(let data):
+                if let response = data as? [Result] {
+                    print("😁 랜덤 사진 가져오기 성공! - \(response)")
+                    self.photoData = response
+                    self.collectionView.reloadData()
+                }
+            case .requestErr(let msg):
+                print(msg)
+            case .pathErr:
+                print("path Err")
+            case .serverErr:
+                print("server Err")
+            case .networkFail:
+                print("network Fail")
+            }
+        }
     }
     
     /// 검색한 사진 가져오기
@@ -58,6 +83,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    /// 단일 사진 정보 가져오기
     func fetchSinglePhoto(photoID: String) {
         PhotoSingleService.shared.getSinglePhoto(clientID: API_KEY, id: photoID) { (result) -> (Void) in
             switch result {
@@ -142,11 +168,13 @@ extension MainViewController: UISearchBarDelegate {
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        fetchSinglePhoto(photoID: photoData[indexPath.row].id)
+//        fetchSinglePhoto(photoID: photoData[indexPath.row].id)
         let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
         if let url = URL(string: self.photoData[indexPath.row].urls.full) {
             detailVC.setData(url: url)
-        } 
+        }
+        detailVC.photoID = photoData[indexPath.row].id
+
         detailVC.modalPresentationStyle = .fullScreen
         self.present(detailVC, animated: true, completion: nil)
     }
@@ -166,8 +194,8 @@ extension MainViewController: UICollectionViewDataSource {
         return cell
     }
     
-    @objc func likeButtonClicked(_ sender: UIButton) {
-        let imgID = photoData[sender.tag].id
-        print("아이디: \(imgID) - 클릭")
-    }
+//    @objc func likeButtonClicked(_ sender: UIButton) {
+//        let imgID = photoData[sender.tag].id
+//        print("아이디: \(imgID) - 클릭")
+//    }
 }

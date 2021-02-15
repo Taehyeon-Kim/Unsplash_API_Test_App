@@ -22,4 +22,7 @@ struct APIConstants {
 
     // api-4: 단일 사진 가져오기 (photo-id로 검색)
     static let getPhotoURL = baseURL + "/photos/:id?client_id={client_id}"
+    
+    // api-5: 랜덤 사진 가져오기
+    static let randomPhotoURL = baseURL + "/photos/random?client_id={client_id}&count={count}"
 }

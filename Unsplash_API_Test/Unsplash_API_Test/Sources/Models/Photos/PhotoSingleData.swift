@@ -91,6 +91,7 @@ import Foundation
 struct PhotoSingleResponse: Codable {
     var id: String
     var color: String
+    var downloads: Int
     var likes: Int
     var description: String?
 //    var location: Location

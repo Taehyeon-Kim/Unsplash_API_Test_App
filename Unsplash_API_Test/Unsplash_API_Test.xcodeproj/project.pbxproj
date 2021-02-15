@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14B660B77A746EEEFAAD55EB /* Pods_Unsplash_API_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3725A81E152083CCD6576E02 /* Pods_Unsplash_API_Test.framework */; };
+		BD0D16FD25DA8C0700544FDF /* PhotoRandomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D16FC25DA8C0700544FDF /* PhotoRandomService.swift */; };
 		BD51F5F825D112C500493CB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD51F5F725D112C500493CB5 /* AppDelegate.swift */; };
 		BD51F5FA25D112C500493CB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD51F5F925D112C500493CB5 /* SceneDelegate.swift */; };
 		BD51F5FF25D112C500493CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD51F5FD25D112C500493CB5 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		71339FEB7FE4EDC3B0D971FE /* Pods-iOS-api-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-api-test.debug.xcconfig"; path = "Target Support Files/Pods-iOS-api-test/Pods-iOS-api-test.debug.xcconfig"; sourceTree = "<group>"; };
 		84DBF61E0FF01D92F2E11548 /* Pods-Unsplash_API_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash_API_Test.debug.xcconfig"; path = "Target Support Files/Pods-Unsplash_API_Test/Pods-Unsplash_API_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		BB976C1D548F0B3C9C372A57 /* Pods-Unsplash_API_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash_API_Test.release.xcconfig"; path = "Target Support Files/Pods-Unsplash_API_Test/Pods-Unsplash_API_Test.release.xcconfig"; sourceTree = "<group>"; };
+		BD0D16FC25DA8C0700544FDF /* PhotoRandomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRandomService.swift; sourceTree = "<group>"; };
 		BD51F5F425D112C500493CB5 /* Unsplash_API_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplash_API_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD51F5F725D112C500493CB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD51F5F925D112C500493CB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,8 +178,8 @@
 				BDD1095325D9752C00BED4CA /* LoginViewController.swift */,
 				BDD1095925D97E5E00BED4CA /* TabBarController.swift */,
 				BD51F61525D127D200493CB5 /* MainViewController.swift */,
-				BDF90D4F25D8513A0076793B /* DetailViewController.swift */,
 				BDF90D1E25D801CC0076793B /* ProfileViewController.swift */,
+				BDF90D4F25D8513A0076793B /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -204,6 +206,7 @@
 			children = (
 				BD51F62E25D13E4400493CB5 /* PhotoSearchService.swift */,
 				BDF90D4C25D8496D0076793B /* PhotoSingleService.swift */,
+				BD0D16FC25DA8C0700544FDF /* PhotoRandomService.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				BDF90D3F25D827610076793B /* LikedPhotoCVC.swift in Sources */,
 				BD51F61625D127D200493CB5 /* MainViewController.swift in Sources */,
 				BDF90D1F25D801CC0076793B /* ProfileViewController.swift in Sources */,
+				BD0D16FD25DA8C0700544FDF /* PhotoRandomService.swift in Sources */,
 				BD51F5F825D112C500493CB5 /* AppDelegate.swift in Sources */,
 				BD51F62F25D13E4400493CB5 /* PhotoSearchService.swift in Sources */,
 				BD51F62C25D13D6800493CB5 /* PhotoSearchData.swift in Sources */,
